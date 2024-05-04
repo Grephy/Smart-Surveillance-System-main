@@ -53,3 +53,29 @@ def video_feed():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+# use this to get an idea how it works(does not include frontend video stream) runs without error
+"""
+from flask import Flask, render_template, request
+import subprocess
+
+app = Flask(__name__)
+
+# Route for the homepage
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+# Route for starting object detection
+@app.route('/start_detection', methods=['POST'])
+def start_detection():
+    # Run the command to start object detection
+    subprocess.Popen(["python", "main1.py", "--prototxt", "mobilenet_ssd/MobileNetSSD_deploy.prototxt", "--model", "mobilenet_ssd/MobileNetSSD_deploy.caffemodel"])
+    return 'Detection started successfully!'
+
+if __name__ == '__main__':
+    # Run the Flask application
+    app.run(debug=True)
+
+"""
