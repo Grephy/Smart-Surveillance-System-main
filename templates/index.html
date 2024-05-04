@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Detection</title>
+</head>
+<body>
+    <h1>Object Detection</h1>
+    <button id="startButton">Start Detection</button>
+    <div id="videoContainer">
+        <img id="videoFeed" src="{{ url_for('video_feed') }}" alt="Video Feed">
+    </div>
+    <script>
+        document.getElementById('startButton').addEventListener('click', function() {
+            fetch('/start_detection', {
+                method: 'POST'
+            }).then(response => {
+                if (response.ok) {
+                    console.log('Detection started successfully!');
+                } else {
+                    console.error('Failed to start detection');
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>

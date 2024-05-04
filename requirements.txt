@@ -1,0 +1,9 @@
+schedule
+numpy
+argparse
+imutils
+dlib
+opencv-python
+scipy
+
+IF dlib library install fails download and install cmake 
