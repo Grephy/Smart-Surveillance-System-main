@@ -1,36 +1,16 @@
-from flask import Flask, render_template, Response
-
-# import cv2
+from flask import Flask, render_template, request
 import subprocess
 
 app = Flask(__name__)
 
 
-def gen_frames():
-    for i in range(3):  # Try indices 0, 1, and 2
-        cap = cv2.VideoCapture(i)
-        if cap.isOpened():
-            break
-    else:
-        raise RuntimeError("Failed to open any camera")
-
-    while True:
-        success, frame = cap.read()
-        if not success:
-            break
-        else:
-            ret, buffer = cv2.imencode(".jpg", frame)
-            frame = buffer.tobytes()
-            yield (b"--frame\r\n" b"Content-Type: image/jpeg\r\n\r\n" + frame + b"\r\n")
-
-    cap.release()
-
-
+# Route for the homepage
 @app.route("/")
 def index():
     return render_template("index.html")
 
 
+# Route for starting object detection
 @app.route("/start_detection", methods=["POST"])
 def start_detection():
     # Run the command to start object detection
@@ -47,12 +27,8 @@ def start_detection():
     return "Detection started successfully!"
 
 
-@app.route("/video_feed")
-def video_feed():
-    return Response(gen_frames(), mimetype="multipart/x-mixed-replace; boundary=frame")
-
-
 if __name__ == "__main__":
+    # Run the Flask application
     app.run(debug=True)
 
 # from flask import Flask, render_template, Response
