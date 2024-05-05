@@ -650,6 +650,7 @@ h6 {
   .toggle-sidebar #main,
   .toggle-sidebar #footer {
     margin-left: 0;
+    margin-top: 0;
   }
 
   .toggle-sidebar .sidebar {
