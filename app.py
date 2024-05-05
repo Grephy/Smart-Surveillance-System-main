@@ -1,14 +1,21 @@
 from flask import Flask, render_template, request
 import subprocess
 import signal  # Import signal module for process termination
+from flask import Flask, render_template
 
 app = Flask(__name__)
+# app = Flask(__name__, static_folder="assets")
 
 
 # Route for the homepage
 @app.route("/")
 def index():
-    return render_template("index1.html")
+    return render_template("index.html")
+
+
+# for admin page
+if __name__ == "__main__":
+    app.run(debug=True)
 
 
 # Variable to keep track of the detection process
