@@ -8,6 +8,7 @@
 <body>
     <h1>Object Detection</h1>
     <button id="startButton">Start Detection</button>
+    <button id="stopButton">Stop Detection</button>
     <div id="videoContainer">
         <!-- Video will be displayed here -->
     </div>
@@ -26,6 +27,23 @@
                 console.error('Error:', error);
             });
         });
+
+        
+        document.getElementById('stopButton').addEventListener('click', function() {
+            fetch('/stop_detection', {
+                method: 'POST'
+            }).then(response => {
+                if (response.ok) {
+                    console.log('Detection stopped successfully!');
+                } else {
+                    console.error('Failed to stop detection');
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+            });
+        });
+
+
     </script>
 </body>
 </html>
