@@ -153,10 +153,15 @@
               <div class="card">
 
                 <div class="card-body">
-                  <h5 class="card-title">Camera Input<span>not done</span></h5>
-
-                  <video id="webCam" autoplay playsinlne width="700" height="400"></video>
+                  <h5 class="card-title">Object Detection<span>not done</span></h5>
+                  <button id="startButton">Start Detection</button>
+                  <button id="stopButton">Stop Detection</button>
+                  <div id="videoContainer">
+                      <!-- Video will be displayed here -->
+                  </div>
+                                <!-- <video id="webCam" autoplay playsinlne width="700" height="400"></video> -->
                   <!-- <canvas id="canvas"></canvas> -->
+                  
 
                 </div>
 
@@ -643,5 +648,38 @@
   const canvasElement = document.getElementById("canvas");
   const webcam = new Webcam(webCamElement, "user", canvasElement) ;
   webcam.start();
+</script>
+<script>
+  document.getElementById('startButton').addEventListener('click', function() {
+      fetch('/start_detection', {
+          method: 'POST'
+      }).then(response => {
+          if (response.ok) {
+              console.log('Detection started successfully!');
+              // You can add code here to display the video if required
+          } else {
+              console.error('Failed to start detection');
+          }
+      }).catch(error => {
+          console.error('Error:', error);
+      });
+  });
+
+  
+  document.getElementById('stopButton').addEventListener('click', function() {
+      fetch('/stop_detection', {
+          method: 'POST'
+      }).then(response => {
+          if (response.ok) {
+              console.log('Detection stopped successfully!');
+          } else {
+              console.error('Failed to stop detection');
+          }
+      }).catch(error => {
+          console.error('Error:', error);
+      });
+  });
+
+
 </script>
 </html>

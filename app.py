@@ -8,7 +8,7 @@ app = Flask(__name__)
 # Route for the homepage
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index1.html")
 
 
 # Variable to keep track of the detection process
