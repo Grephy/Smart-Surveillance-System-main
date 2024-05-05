@@ -259,7 +259,10 @@ def run():
                             from_=twilio_number,
                             to=my_phone_number,
                         )
-                        # print(message.body)
+                        print(message.body)
+                        # After sending the Twilio message
+                        with open("twilio_message.txt", "w") as file:
+                            file.write(message.body)
 
             # store the trackable object in our dictionary
             trackableObjects[objectID] = to

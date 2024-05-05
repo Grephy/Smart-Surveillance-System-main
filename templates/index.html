@@ -449,6 +449,13 @@
 
             <div class="card-body">
               <h5 class="card-title">Recent Activity <span>Twillo here</span></h5>
+              <!-- <div id="twilioMessage"></div>
+              <h6 style="
+              padding: 10px;
+              color: red;
+              box-shadow: 2px 2px 2px 2px #8888;
+          " id="twilioMessage"></h6> -->
+
               <h6 style="
               padding: 10px;
               color: red;
@@ -633,5 +640,15 @@
   });
 
 
+</script>
+<script>
+  // Fetch the Twilio message from the backend
+  fetch('/twilio_message')
+    .then(response => response.text())
+    .then(data => {
+      // Update the content of the div with id "twilioMessage"
+      document.getElementById('twilioMessage').innerText = data;
+    })
+    .catch(error => console.error('Error:', error));
 </script>
 </html>

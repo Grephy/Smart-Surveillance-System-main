@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import subprocess
 import signal  # Import signal module for process termination
 from flask import Flask, render_template
+from flask import send_file
 
 app = Flask(__name__)
 # app = Flask(__name__, static_folder="assets")
@@ -12,6 +13,17 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     return render_template("index.html")
+
+
+# twilio message
+@app.route("/twilio_message")
+def get_twilio_message():
+    try:
+        with open("twilio_message.txt", "r") as file:
+            message = file.read()
+        return message
+    except FileNotFoundError:
+        return "No message available"
 
 
 # # for admin page
