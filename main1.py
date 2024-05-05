@@ -242,6 +242,9 @@ def run():
 
                         # Run the script
                         # subprocess.run(["python", "Twilio_message_sender.py"])
+                        # int count = 0
+                        # count += 1
+
                         from twilio.rest import Client
 
                         account_sid = "AC850715c8fdd8532573bd3087f9e1464e"
@@ -283,7 +286,7 @@ def run():
         ]
 
         info2 = [
-            ("Total people inside", x),
+            ("", x),
         ]
 
         # Display the output
