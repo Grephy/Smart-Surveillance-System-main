@@ -247,15 +247,15 @@ def run():
 
                         from twilio.rest import Client
 
-                        account_sid = "AC850715c8fdd8532573bd3087f9e1464e"
-                        auth_token = "c6689a884f0d42bdfdd2b4c1d88eb753"
+                        account_sid = "Enter your acc sid"
+                        auth_token = "Enter Your auth token"
 
-                        twilio_number = "+18159753495"
-                        my_phone_number = "+919987182137"
+                        twilio_number = "Enter your number received via TWILIO"
+                        my_phone_number = "Enter number to which alert will be sended"
                         client = Client(account_sid, auth_token)
 
                         message = client.messages.create(
-                            body="Enter Message",
+                            body="A person crossed the railway tracks",
                             from_=twilio_number,
                             to=my_phone_number,
                         )
