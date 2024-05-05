@@ -5,6 +5,7 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 # app = Flask(__name__, static_folder="assets")
+# app = Flask(__name__, static_url_path="/static")
 
 
 # Route for the homepage
@@ -13,9 +14,9 @@ def index():
     return render_template("index.html")
 
 
-# for admin page
-if __name__ == "__main__":
-    app.run(debug=True)
+# # for admin page
+# if __name__ == "__main__":
+#     app.run(debug=True)
 
 
 # Variable to keep track of the detection process
